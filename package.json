@@ -6,6 +6,10 @@
     "contributes": {
         "snippets": [
             {
+                "language": "yaml",
+                "path": "./snippets/custom/kustomize.json"
+            },
+            {
                 "language": [
                     "plaintext",
                     "markdown",

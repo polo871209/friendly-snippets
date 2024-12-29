@@ -1,0 +1,54 @@
+{
+  "kustomize patch": {
+    "prefix": "kustomize-patch",
+    "description": "kustomize patch",
+    "body": [
+      "patches:",
+      "  - target:",
+      "      group: apps",
+      "      version: v1",
+      "      kind: Deployment",
+      "    patch: |-",
+      "      - op: ${1:add}",
+      "        path:",
+      "        value:"
+    ]
+  },
+  "kustomize patch_delete": {
+    "prefix": "kustomize-patch_delete",
+    "description": "kustomize patch_delete",
+    "body": [
+      "patches:",
+      "  - target:",
+      "      group: apps",
+      "      version: v1",
+      "      kind: Deployment",
+      "    patch: |-",
+      "      $patch: delete",
+      "      kind: Deployment",
+      "      metadata:",
+      "        name: all"
+    ]
+  },
+  "kustomize label": {
+    "prefix": "kustomize-label",
+    "description": "kustomize label",
+    "body": [
+      "labels:",
+      "  - pairs:",
+      "      app.kubernetes.io/name: ${1:name}",
+      "    includeSelectors: true",
+      "    includeTemplates: true"
+    ]
+  },
+  "kustomize base": {
+    "prefix": "kustomize-base",
+    "description": "kustomize base",
+    "body": [
+      "apiVersion: kustomize.config.k8s.io/v1beta1",
+      "kind: Kustomization",
+      "resources:",
+      "  - ${1:resource}"
+    ]
+  }
+}
