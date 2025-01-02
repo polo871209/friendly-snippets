@@ -6,6 +6,8 @@ The only goal is to have one community driven repository for all kinds of
 snippets in all programming languages, this way you can have it all in one
 place.
 
+I use [python script](https://github.com/polo871209/dotfiles/blob/main/scripts/snippet/snippet.py) to convert my obsidian notes into snippets.
+
 ## Install
 
 Use your plugin manager of choice, e.g.
@@ -13,7 +15,7 @@ Use your plugin manager of choice, e.g.
 ### With Lazy.nvim
 
 ```lua
-{ "rafamadriz/friendly-snippets" }
+{ "polo871209/friendly-snippets" }
 ```
 
 > [!WARNING]
@@ -24,28 +26,36 @@ Use your plugin manager of choice, e.g.
 > startup-time
 >
 > ```lua
+> -- my cmp config example extend from kickstart.nvim: https://github.com/polo871209/dotfiles/blob/main/nvim/lua/custom/plugins/cmp.lua#L21-L2
 > {
 >   "L3MON4D3/LuaSnip",
->   dependencies = { "rafamadriz/friendly-snippets" },
+>   dependencies = 
+>       {
+>         'polo871209/friendly-snippets',
+>         branch = 'custom',
+>         config = function()
+>           require('luasnip.loaders.from_vscode').lazy_load()
+>         end,
+>       },
 > }
 > ```
 
 ### With Packer
 
 ```lua
-use "rafamadriz/friendly-snippets"
+use "polo871209/friendly-snippets"
 ```
 
 ### With vim-plug
 
 ```vim
-Plug "rafamadriz/friendly-snippets"
+Plug "polo871209/friendly-snippets"
 ```
 
 ### With coc.nvim
 
 ```vim
-:CocInstall https://github.com/rafamadriz/friendly-snippets@main
+:CocInstall https://github.com/polo871209/friendly-snippets@custom
 ```
 
 ## Usage
